@@ -5,11 +5,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Create Customer Page</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>Create Customer</h1>
+        <p>
+            Please enter the details of the customer below:
+        </p>
+        <form action="CreateCustomerServlet.do" method="POST">
+            <table>
+                <tr>
+                    <td>ID: </td>
+                    <td><input type="text" name="id" required=""></td>
+                </tr>
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" name="name" required=""></td>
+                </tr>
+                <tr>
+                    <td>Surname: </td>
+                    <td><input type="text" name="surname" required=""></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><input type="text" name="email" required=""></td>
+                </tr>
+                <tr>
+                    <td>Phone number: </td>
+                    <td><input type="text" name="phoneNumber" required=""></td>
+                </tr>
+                <tr>
+                    <td>Address: </td>
+                    <td><input type="text" name="address" required=""></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="ADD"></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
