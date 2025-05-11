@@ -23,27 +23,24 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Lob
-    private Byte[] image;  
+    private byte[] image;  
     private String name;
     private String description;
     private Double price;
-    private String catagory;
     boolean isAvalable = true;
 
     public Product() {
     }
-    public Product(Byte[] image, String name, String description, Double price, String catagory) {
+    public Product(byte[] image, String name, String description, Double price) {
         this.image = image;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.catagory = catagory;
     }
     public Product(String name, String description, Double price, String catagory, boolean isAvalable) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.catagory = catagory;
         this.isAvalable = isAvalable;
     }
     
@@ -67,14 +64,6 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public String getCatagory() {
-        return catagory;
-    }
-
-    public void setCatagory(String catagory) {
-        this.catagory = catagory;
-    }
-
     public boolean isIsAvalable() {
         return isAvalable;
     }
@@ -83,11 +72,11 @@ public class Product implements Serializable {
         this.isAvalable = isAvalable;
     }
 
-    public Byte[] getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(Byte[] image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
     
