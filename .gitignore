@@ -4,3 +4,4 @@
 /MorutiFastFoodEJB/dist/
 /MrMorutiWebApplication/dist/
 *.properties
+/ShopEJBModule/build/
