@@ -6,6 +6,8 @@
 package za.ac.tut.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,23 +32,23 @@ public class Customer implements Serializable {
     private Integer phone_number;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_fk")
-    private Order order;
+    private List<Order> order;
 
     public Customer() {
     }
 
-    public Customer(String name, Integer phone_number, Order order) {
+    public Customer(String name, Integer phone_number, List<Order> order) {
         this.name = name;
         this.phone_number = phone_number;
-        this.order = order;
+         this.order = (List<Order>) order;
     }
 
     public Order getOrder() {
-        return order;
+        return (Order) order;
     }
 
     public void setOrder(Order order) {
-        this.order = order;
+        this.order = (List<Order>) order;
     }
 
     public String getName() {
