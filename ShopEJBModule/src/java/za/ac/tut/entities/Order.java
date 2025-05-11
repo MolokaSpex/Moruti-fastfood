@@ -3,13 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.tut.model.entities;
+package za.ac.tut.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,7 +28,13 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Integer customer_id;//fk
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name="Customer_id")
+    private Customer customer;//fk
+    
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name="Item_id")
+    private List<OrderItem> order_items;
     private String order_status;
     private double total_amount;
 
@@ -35,17 +47,17 @@ public class Order implements Serializable {
     }
 
     public Order(Integer customer_id, String order_status, double total_amount) {
-        this.customer_id = customer_id;
+        this.customer = customer;
         this.order_status = order_status;
         this.total_amount = total_amount;
     }
 
-    public Integer getCustomer_id() {
-        return customer_id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomer_id(Integer customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getOrder_status() {
