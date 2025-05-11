@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -21,7 +22,8 @@ public class OrderItem implements Serializable {
     private Long item_id;
 
     
-    @OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    @JoinColumn(name = "product_id")
     private     Product product;  
     private	Integer quantity;
     private 	Double subtotal;
