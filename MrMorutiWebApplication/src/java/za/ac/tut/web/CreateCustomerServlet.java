@@ -7,80 +7,53 @@ package za.ac.tut.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import za.ac.tut.bl.CustomerFacadeLocal;
+import za.ac.tut.entities.Customer;
+import za.ac.tut.entities.Order;
 
 /**
  *
- * @author kelet
+ * @author Keletso
  */
 public class CreateCustomerServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CreateCustomerServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CreateCustomerServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    @EJB CustomerFacadeLocal cfl;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Long id = Long.parseLong(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String surname = request.getParameter("Surname");
+        Integer phone_number = Integer.parseInt(request.getParameter("phone_number"));
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String order1 = request.getParameter("order1");
+        String order2 = request.getParameter("order2");
+        String order3 = request.getParameter("order3");
+        
+        Customer customer = createCustomer(id, name, surname, phone_number, email, address);
+        
+        cfl.create(customer);
+        
+        RequestDispatcher disp = request.getRequestDispatcher("create_customer_outcome.jsp");
+        disp.forward(request, response);
+        
+    } 
+    private Customer createCustomer(Long id, String name, String surname, Integer phone_number, String email, String address){
+        Customer customer = new Customer();
+        customer.setId(id);
+        customer.setName(name);
+        customer.setSurname(surname);
+        customer.setEmail(email);
+        customer.setPhone_number(phone_number);
+        customer.setAddress(address);
+        
+        return customer;
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
