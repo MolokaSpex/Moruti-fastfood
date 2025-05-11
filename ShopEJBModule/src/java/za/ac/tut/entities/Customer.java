@@ -6,14 +6,18 @@
 package za.ac.tut.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
- * @author kelet
+ * @author Keletso
  */
 @Entity
 public class Customer implements Serializable {
@@ -22,6 +26,44 @@ public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String name;
+    private Integer phone_number;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_fk")
+    private Order order;
+
+    public Customer() {
+    }
+
+    public Customer(String name, Integer phone_number, Order order) {
+        this.name = name;
+        this.phone_number = phone_number;
+        this.order = order;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(Integer phone_number) {
+        this.phone_number = phone_number;
+    }
 
     public Long getId() {
         return id;
