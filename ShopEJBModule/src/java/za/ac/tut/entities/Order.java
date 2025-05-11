@@ -22,6 +22,49 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Integer customer_id;//fk
+    private String order_status;
+    private double total_amount;
+
+    public Order() {
+    }
+
+    public Order(String order_status, double total_amount) {
+        this.order_status = order_status;
+        this.total_amount = total_amount;
+    }
+
+    public Order(Integer customer_id, String order_status, double total_amount) {
+        this.customer_id = customer_id;
+        this.order_status = order_status;
+        this.total_amount = total_amount;
+    }
+
+    public Integer getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(Integer customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    public String getOrder_status() {
+        return order_status;
+    }
+
+    public void setOrder_status(String order_status) {
+        this.order_status = order_status;
+    }
+
+    public double getTotal_amount() {
+        return total_amount;
+    }
+
+    public void setTotal_amount(double total_amount) {
+        this.total_amount = total_amount;
+    }
+    
+    
 
     public Long getId() {
         return id;
