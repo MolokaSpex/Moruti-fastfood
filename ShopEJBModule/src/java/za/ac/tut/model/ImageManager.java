@@ -23,7 +23,6 @@ public class ImageManager implements ImageInterface{
             imageBytes = Files.readAllBytes(imgPath);
         } catch (IOException e) {
             System.err.println("Error reading image file: " + e.getMessage());
-        // You might want to throw a custom exception or return null here
         }
         return imageBytes;
     }

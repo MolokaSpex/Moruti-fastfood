@@ -9,5 +9,5 @@ package za.ac.tut.model;
  * @author E.Thema 
  */
 public interface ImageInterface {
-    public Byte[] getByteImage(String img);
+    public byte[] getByteImage(String img);
 }
