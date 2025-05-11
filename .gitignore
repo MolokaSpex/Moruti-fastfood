@@ -5,3 +5,4 @@
 /MrMorutiWebApplication/dist/
 *.properties
 /ShopEJBModule/build/
+/ShopEJBModule/dist/
