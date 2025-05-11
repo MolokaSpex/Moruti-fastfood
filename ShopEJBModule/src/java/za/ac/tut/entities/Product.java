@@ -37,11 +37,10 @@ public class Product implements Serializable {
         this.description = description;
         this.price = price;
     }
-    public Product(String name, String description, Double price, String catagory, boolean isAvalable) {
+    public Product(String name, String description, Double price) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.isAvalable = isAvalable;
     }
     
 

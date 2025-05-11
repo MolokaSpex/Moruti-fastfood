@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <h1>Add Product</h1>
         </div>
         <div>
-            <form>
+            <form action="AddProductServlet.do" method="post">
                 <table>
                     <tr>
                         <td> Upload Product Image </td>
@@ -22,15 +22,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     </tr>
                     <tr>
                         <td> Product Name </td>
-                        <td> <input type="text" name="productName"> </td>
+                        <td> <input type="text" name="productName" required=""> </td>
                     </tr>
                     <tr>
                         <td> Product Description </td>
-                        <td> <input type="text" name="productDescription"> </td>
+                        <td> <input type="text" name="productDescription" required=""> </td>
                     </tr>
                     <tr>
                         <td> Product Price </td>
-                        <td> <input type="text" name="productPrice"> </td>
+                        <td> <input type="text" name="productPrice" required=""> </td>
                     </tr>
                     <tr>
                         <td> <input type="text" name="option" value="add" > </td>
