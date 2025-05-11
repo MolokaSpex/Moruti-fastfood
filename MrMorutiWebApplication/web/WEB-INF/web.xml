@@ -4,9 +4,17 @@
         <servlet-name>AddProductServlet</servlet-name>
         <servlet-class>za.ac.tut.web.AddProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateCustomerServlet</servlet-name>
+        <servlet-class>za.ac.tut.web.CreateCustomerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddProductServlet</servlet-name>
         <url-pattern>/AddProductServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateCustomerServlet</servlet-name>
+        <url-pattern>/CreateCustomerServlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

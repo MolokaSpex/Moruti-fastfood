@@ -29,18 +29,48 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String surname;
     private Integer phone_number;
+    private String email;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_fk")
     private List<Order> order;
+    private String address;
 
     public Customer() {
     }
 
-    public Customer(String name, Integer phone_number, List<Order> order) {
+    public Customer(String name, String surname, Integer phone_number, String email, List<Order> order, String address) {
         this.name = name;
+        this.surname = surname;
         this.phone_number = phone_number;
-         this.order = (List<Order>) order;
+        this.email = email;
+        this.order = (List<Order>) order;
+        this.address = address;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Order getOrder() {
