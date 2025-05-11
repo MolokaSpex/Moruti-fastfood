@@ -3,3 +3,4 @@
 /MorutiFastFoodEJB/build/
 /MorutiFastFoodEJB/dist/
 /MrMorutiWebApplication/dist/
+*.properties
