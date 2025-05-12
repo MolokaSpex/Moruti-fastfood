@@ -6,12 +6,13 @@ package za.ac.tut.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.jboss.weld.context.ejb.Ejb;
+ 
 import za.ac.tut.bl.ProductFacadeLocal;
 
 /**
@@ -20,7 +21,7 @@ import za.ac.tut.bl.ProductFacadeLocal;
  */
 public class RemoveProductServlet extends HttpServlet {
     
-    @Ejb ProductFacadeLocal pfl;
+    @EJB ProductFacadeLocal pfl;
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
