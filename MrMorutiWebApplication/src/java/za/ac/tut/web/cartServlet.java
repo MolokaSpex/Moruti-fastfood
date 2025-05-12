@@ -19,11 +19,9 @@ public class cartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Get the product name and price from the request
+        
         String productName = request.getParameter("productName");
-        //String productPriceStr = request.getParameter("productPrice"); // You might not need this in the cart, but I'll leave it here.
-        //int productPrice = Integer.parseInt(productPriceStr);
-
+  
         // Get the session
         HttpSession session = request.getSession();
 
@@ -47,6 +45,6 @@ public class cartServlet extends HttpServlet {
         session.setAttribute("cart", cart);
 
         // Redirect back to the product catalog page so the user can continue shopping
-        response.sendRedirect("product_catalog.jsp"); //changed to product_catalog.jsp
+        response.sendRedirect("product_catalog.jsp");  
     }
 }
