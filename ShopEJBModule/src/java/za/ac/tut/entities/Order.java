@@ -35,6 +35,14 @@ public class Order implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name="Item_id")
     private List<OrderItem> order_items;
+
+    public List<OrderItem> getOrder_items() {
+        return order_items;
+    }
+
+    public void setOrder_items(List<OrderItem> order_items) {
+        this.order_items = order_items;
+    }
     private String order_status;
     private double total_amount;
 
