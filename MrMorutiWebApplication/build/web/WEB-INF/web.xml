@@ -17,8 +17,13 @@
         <servlet-class>za.ac.tut.web.OrderItemServlet</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>RemoveProductServlet</servlet-name>
         <servlet-class>za.ac.tut.web.RemoveProductServlet</servlet-class>
+=======
+        <servlet-name>cartServlet</servlet-name>
+        <servlet-class>za.ac.tut.web.cartServlet</servlet-class>
+>>>>>>> a509e1703b645adfa582e17758ebd8b8456d1bf9
     </servlet>
     <servlet-mapping>
         <servlet-name>AddProductServlet</servlet-name>
@@ -37,8 +42,13 @@
         <url-pattern>/OrderItemServlet.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>RemoveProductServlet</servlet-name>
         <url-pattern>/RemoveProductServlet.do</url-pattern>
+=======
+        <servlet-name>cartServlet</servlet-name>
+        <url-pattern>/cartServlet.do</url-pattern>
+>>>>>>> a509e1703b645adfa582e17758ebd8b8456d1bf9
     </servlet-mapping>
     <session-config>
         <session-timeout>
