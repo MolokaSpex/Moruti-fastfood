@@ -1,27 +1,75 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
-<html>
-    <head>
-        <title>Index apge</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-<<<<<<< HEAD
-        <div>
-            <ul>
-                <li> <a href="admin_home_page.html">Admin page</a> </li>
-                <li> <a href="client_customer.html">client page</a> </li>
-            </ul>
+<html lang="en">
+<head>
+    <title>Welcome to Moruti's Tuck Shop</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .hero-section {
+            background: url('assets/shop-banner.jpg') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Moruti's Tuck Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="admin_home_page.html">Admin</a></li>
+                <li class="nav-item"><a class="nav-link" href="client_customer.html">Client</a></li>
+ 
+                <li class="nav-item"><a class="nav-link btn btn btn-primary" href="product_catalog.jsp">Shop Now</a></li>
+            </ul>
         </div>
-=======
-        <div>brilliant write content</div>
-        
-        <a href="product_catalog.jsp">product_catalog</a>
->>>>>>> ec149aa163598746b9fe1ca045009ed2debd3c0a
-    </body>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero-section text-center">
+    <h1 class="fw-bold">Welcome to Moruti's Tuck Shop</h1>
+</div>
+
+<!-- Quick Links Section -->
+<div class="container text-center mt-5">
+    <h2>Start Shopping Now!</h2>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card p-4 shadow-sm">
+                <h5>Admin Section</h5>
+                <p>Manage products, orders, and customers.</p>
+                <a href="admin_home_page.html" class="btn btn-dark">Go to Admin Page</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 shadow-sm">
+                <h5>Customer Section</h5>
+                <p>Browse products, add items to cart, and checkout.</p>
+                <a href="product_catalog.jsp" class="btn btn-dark">Go to Client Page</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 shadow-sm">
+                <h5>Product Catalog</h5>
+                <p>Explore our latest products and best deals.</p>
+                <a href="product_catalog.jsp" class="btn btn-success">Start Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
