@@ -20,7 +20,9 @@ public class OrderItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long item_id;
-
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name="Item_id")
+    private Order order;
     
     @ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name = "product_id")
@@ -29,6 +31,14 @@ public class OrderItem implements Serializable {
     private 	Double subtotal;
 
     public OrderItem() {
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
  
     public Long getItem_id() {
