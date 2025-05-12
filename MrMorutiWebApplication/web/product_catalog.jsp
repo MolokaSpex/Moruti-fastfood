@@ -89,7 +89,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
-                                    <form action="cartServlet.do" method="post">
+                                    <form action="shoping_cartServlet" method="post">
                                         <input type="hidden" name="productName" value="<%= product.getName() %>">
                                         <input type="hidden" name="productPrice" value="<%= product.getPrice() %>">
                                         <div class="d-flex justify-content-center align-items-center">
