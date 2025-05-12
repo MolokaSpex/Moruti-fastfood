@@ -5,7 +5,9 @@
 package za.ac.tut.web;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,32 +27,41 @@ public class GetAllProductsServlet extends HttpServlet {
     @EJB private ProductFacadeLocal pfl;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {         
+            throws ServletException, IOException {    
+        
+         HttpSession session = request.getSession(true);
+         
+         
         List<Product> listOfProducts = pfl.findAll();
-        request.setAttribute("listOfProducts", listOfProducts);
+        
+        sessionUpdate(session,listOfProducts);
+        
         RequestDispatcher disp = request.getRequestDispatcher("product_catalog.jsp");
         disp.forward(request, response);
     }
     
+    
+    /*
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Product p = pfl.find(Long.parseLong(request.getParameter("product")));
-        sessionUpdate(session,p);
-        Integer numItems = 0;
+        HttpSession session = request.getSession(true);
+        
+        List<Product> cartProduct = (List<Product>) session.getAttribute("cartProduct");
+        //Product p = pfl.find(Long.parseLong(request.getParameter("product")));
+        //sessionUpdate(session,p);
+        //Integer numItems = 0;
         
         RequestDispatcher disp = request.getRequestDispatcher("product_catalog.jsp");
         disp.include(request, response);
     }
-
-    private void sessionUpdate(HttpSession session, Product p) {
-        Integer cartNum = (Integer) session.getAttribute("cartNum");
-        cartNum += 1;
-        session.setAttribute("cartNum", cartNum);
+*/
+    private void sessionUpdate(HttpSession session, List<Product> listOfProducts) {
         
-        List<Product> cartProduct = (List<Product>) session.getAttribute("cartProduct");
-        cartProduct.add(p);
-        session.setAttribute("cartNum", cartNum);
+        Map<String, Integer>  cart = new HashMap<>();
+        session.setAttribute("cart",cart);
+        session.setAttribute("listOfProducts",listOfProducts);
+ 
+  
     }
 }
