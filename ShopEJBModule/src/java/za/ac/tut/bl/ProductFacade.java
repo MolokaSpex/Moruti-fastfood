@@ -8,6 +8,7 @@ package za.ac.tut.bl;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import za.ac.tut.entities.Product;
 
 /**
@@ -27,6 +28,13 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
 
     public ProductFacade() {
         super(Product.class);
+    }
+
+    @Override
+    public void removeByName(String name) {
+        Query q = em.createQuery("DELETE FROM Product e WHERE e.name = ?1");
+        q.setParameter(1, name);
+        q.executeUpdate();
     }
     
 }

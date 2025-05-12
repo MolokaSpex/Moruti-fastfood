@@ -29,5 +29,6 @@ public interface ProductFacadeLocal {
     List<Product> findRange(int[] range);
 
     int count();
+    void removeByName(String name);
     
 }

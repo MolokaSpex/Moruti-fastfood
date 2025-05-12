@@ -73,7 +73,7 @@ public class OrderItemServlet extends HttpServlet {
         oi.setOrder(order);
         oil.edit(oi);
     }
-    session.setAttribute("customer", customer);
+    session.setAttribute("customer", customer   );
     session.removeAttribute("listOfOrders");
     response.sendRedirect("orderConfirmation.jsp");
         
