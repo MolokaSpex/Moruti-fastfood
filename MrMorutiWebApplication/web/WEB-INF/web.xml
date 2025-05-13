@@ -24,6 +24,10 @@
         <servlet-name>shoping_cartServlet</servlet-name>
         <servlet-class>za.ac.tut.web.shoping_cartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>ac.za.tut.controller.CartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddProductServlet</servlet-name>
         <url-pattern>/AddProductServlet.do</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>shoping_cartServlet</servlet-name>
         <url-pattern>/shoping_cartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
