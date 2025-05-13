@@ -8,6 +8,7 @@ Moruti's Tuck Shop is a web application simulating an online shopping experience
 
 Built with Java Server Pages (JSP) for the view, Java Servlets ,EJB,JPA ,JQPL ,SESSION MANAGEMENT and Bootstrap for styling and layout.
 This project serves as a demonstration of basic e-commerce concepts using Java web technologies.
+![image](https://github.com/user-attachments/assets/a8c8cd32-1026-4678-a437-b7132bd982c5)
 
 ![image](https://github.com/user-attachments/assets/ecf0b388-ebbc-47a6-9353-4270400333f4)
 ![image](https://github.com/user-attachments/assets/59767aba-031f-440f-9a7d-3d9268ef413d)
