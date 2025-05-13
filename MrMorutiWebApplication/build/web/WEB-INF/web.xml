@@ -28,6 +28,10 @@
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>ac.za.tut.controller.CartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updateCartServlet</servlet-name>
+        <servlet-class>ac.za.tut.controller.updateCartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddProductServlet</servlet-name>
         <url-pattern>/AddProductServlet.do</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateCartServlet</servlet-name>
+        <url-pattern>/updateCartServlet.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

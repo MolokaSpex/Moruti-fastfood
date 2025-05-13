@@ -6,7 +6,7 @@
 <%@ page import="java.util.List"%>
 <%@page import="za.ac.tut.entities.Product"%>
 <%
-    // Get the cart from the session.
+     
     Map<String, Integer> cart = (Map<String, Integer>) session.getAttribute("cart");
     if (cart == null) {
         cart = new HashMap();
@@ -16,10 +16,9 @@
     double totalPrice = 0;
     int totalItems = 0;
 
-    // Retrieve the list of products from the session
+    
     List<Product> listOfProducts = (List<Product>) session.getAttribute("listOfProducts");
 
-    
     Map<String, Product> productMap = new HashMap();
     if (listOfProducts != null) {
         for (Product product : listOfProducts) {
@@ -89,6 +88,7 @@
     <div class="row equal-height">
         <div class="col-md-8 cart-section">
             <h2 class="mb-4">Your Shopping Cart</h2>
+            <form action="updateCartServlet.do" method="post">
             <%
                 if (cart == null || cart.isEmpty()) {
             %>
@@ -97,11 +97,13 @@
             </div>
             <%
                 } else {
+                    totalPrice = 0;  
+                    totalItems = 0;  
+
                     for (Map.Entry<String, Integer> entry : cart.entrySet()) {
                         String productName = entry.getKey();
                         Integer quantity = entry.getValue();
 
-                        // Efficiently get the product from the map
                         Product product = productMap.get(productName);
                         Double productPrice = null;
                         if (product != null) {
@@ -122,10 +124,11 @@
                         <h5><%=productName%></h5>
                         <p>Price: R<%=String.format("%.2f", productPrice)%></p>
                         <div class="d-flex align-items-center">
-                            <button class="btn btn-sm btn-outline-secondary">-</button>
+                            <button type="submit" name="action" value="decrease" class="btn btn-sm btn-outline-secondary">-</button>
+                            <input type="hidden" name="productName" value="<%=productName%>">
                             <span class="mx-2"><%=quantity%></span>
-                            <button class="btn btn-sm btn-outline-secondary">+</button>
-                            <button class="btn btn-sm btn-danger ms-3">Delete</button>
+                            <button type="submit" name="action" value="increase" class="btn btn-sm btn-outline-secondary">+</button>
+                            <button type="submit" name="action" value="delete" class="btn btn-sm btn-danger ms-3">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -137,6 +140,10 @@
                     }
                 }
             %>
+            <% if (!cart.isEmpty()) { %>
+                <button type="submit" class="btn btn-primary mt-3">Update Cart</button>
+            <% } %>
+            </form>
         </div>
 
         <div class="col-md-4 summary-section">
@@ -292,4 +299,35 @@
         const firstName = document.getElementById('firstName').value;
         const lastName = document.getElementById('lastName').value;
         const address = document.getElementById('address').value;
-        const address2 =
+        const address2 = document.getElementById('address2').value;
+        const country = document.getElementById('country').value;
+        const province = document.getElementById('province').value;
+        const zip = document.getElementById('zip').value;
+        const phone = document.getElementById('phone').value;
+        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+        let paymentInfo = {};
+        if (paymentMethod === 'creditCard') {
+            paymentInfo = {
+                cardNumber: document.getElementById('cc-number').value,
+                expiryDate: document.getElementById('cc-expiry').value,
+                cvv: document.getElementById('cc-cvv').value
+            };
+        } else if (paymentMethod === 'eft') {
+            paymentInfo = { message: 'EFT selected. Please follow instructions.' };
+        } else if (paymentMethod === 'cash') {
+            paymentInfo = { message: 'Cash on delivery selected.' };
+        }
+
+        const orderDetails = {
+            shippingAddress: { firstName, lastName, address, address2, country, province, zip, phone },
+            paymentMethod: paymentMethod,
+            paymentDetails: paymentInfo,
+            cartItems: <%= cart %>,
+            totalPrice: <%= totalPrice + 10 %>
+        };
+ 
+    }
+</script>
+</body>
+</html>
